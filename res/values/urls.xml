@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="create_complaint_url">http://complainatron.ca/api/complaints/create</string>
+	<string name="get_complaints_url">http://complainatron.ca/api/complaints</string>
+	<string name="get_categories_url">http://complainatron.ca/api/categories</string>
+	<string name="vote_url">http://complainatron.ca/api/complaints/vote</string>
+	<string name="api_key">android_client</string>
+	<string name="max_results">5</string>
+</resources>

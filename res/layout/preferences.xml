@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="5px">
+   	<TextView  
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content" 
+    	android:text="@string/number_of_complaints_to_display_label" />
+ 	<Spinner
+ 		android:id="@+id/numberComplaintsSpinner"
+ 		android:layout_width="fill_parent"
+ 		android:layout_height="wrap_content"
+ 		android:drawSelectorOnTop="false" />
+ 	<CheckBox
+ 		android:id="@+id/anonymousCheckBox"
+    	android:text="@string/always_anonymous"
+    	android:layout_width="fill_parent"
+    	android:layout_below="@id/numberComplaintsSpinner"
+    	android:layout_height="wrap_content" />
+ 	<LinearLayout
+ 		android:orientation="horizontal"
+ 		android:layout_width="fill_parent"
+ 		android:layout_alignParentRight="true"
+    	android:layout_height="wrap_content">
+   		<Button
+    		android:id="@+id/okButton"
+    		android:layout_alignParentRight="true"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="OK" />
+    	<Button
+    		android:id="@+id/cancelButton"
+    		android:layout_alignParentRight="true"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:text="Cancel" />
+ 	</LinearLayout>
+</LinearLayout>

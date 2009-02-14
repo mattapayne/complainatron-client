@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:padding="5px"
+	android:orientation="vertical">
+	<TextView
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:padding="5px" android:text="Category" />
+	<Spinner android:id="@+id/categorySpinner"
+		android:layout_width="wrap_content" android:layout_height="40px"
+		android:padding="5px" />
+	<EditText android:id="@+id/complaintText"
+		android:layout_width="wrap_content" android:layout_height="217px"
+		android:padding="5px" android:text="EditText" android:textSize="18sp" />
+	<CheckBox android:id="@+id/checkAnonymous"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:text="Submit Anonymously" />
+	<LinearLayout android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:padding="5px"
+		android:layout_gravity="right">
+		<Button android:id="@+id/okButton" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:text="OK" />
+		<Button android:id="@+id/cancelButton" android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:text="Cancel" />
+	</LinearLayout>
+</TableLayout>

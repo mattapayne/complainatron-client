@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:padding="5px"
+    android:layout_height="fill_parent">
+	<TextView
+		android:id="@+id/complaintDetailsTextView"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent" />
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    	android:orientation="horizontal"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:paddingTop="5px">
+    	<Button
+    		android:id="@+id/voteForButton"
+    		android:text="@string/vote_for_label"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content" />
+    	<Button
+    		android:id="@+id/voteAgainstButton"
+    		android:text="@string/vote_against_label" 
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

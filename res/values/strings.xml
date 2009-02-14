@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preferences_label">Preferences</string>
+    <string name="new_complaint_label">New Complaint</string>
+    <string name="map_label">Mapped Complaints</string>
+    <string name="app_name">Complainatron Client</string>
+    <string name="select_category_label">Select a category</string>
+    <string name="enter_complaint_category">Enter your complaint</string>
+    <string name="anonymous_submission">Submit anonymously</string>
+    <string name="number_of_complaints_to_display_label">Number of complaints to display</string>
+	<string name="always_anonymous">Always submit complaints anonymously</string>
+	<string name="close_button_text">Close</string>
+	<string name="vote_for_label">Vote For!</string>
+	<string name="vote_against_label">Vote Against!</string>
+</resources>
