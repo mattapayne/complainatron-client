@@ -6,12 +6,11 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import ca.mattpayne.complainatronclient.data.IDataAccessor;
 import ca.mattpayne.complainatronclient.models.Complaint;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.ItemizedOverlay;
@@ -21,12 +20,15 @@ public class ItemizedComplaintOverlay extends ItemizedOverlay<OverlayItem>
 {
 	private List<Complaint> complaints;
 	private Context context;
+	private IDataAccessor dataAccessor;
 
-	public ItemizedComplaintOverlay(Drawable marker, List<Complaint> complaints, Context ctx)
+	public ItemizedComplaintOverlay(Drawable marker, List<Complaint> complaints, 
+			Context ctx, IDataAccessor dataAccessor)
 	{
 		super(marker);
 		this.context = ctx;
 		this.complaints = complaints;
+		this.dataAccessor = dataAccessor;
 		populate();
 	}
 
@@ -79,39 +81,8 @@ public class ItemizedComplaintOverlay extends ItemizedOverlay<OverlayItem>
 		
 		final AlertDialog d = b.create();
 		
-		voteFor.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View arg0)
-			{
-				AbstractMapActivity act = (AbstractMapActivity)context;
-				try
-				{
-					act.getDataAccessor().vote(selected, true);
-					d.dismiss();
-				}
-				catch(Exception e)
-				{
-					act.showCustomDialog("Error", "An error occurred while submitting your vote\n" + e.getMessage());
-					Log.e("Error", e.getMessage());
-				}
-			}});
-		
-		voteAgainst.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View arg0)
-			{
-				AbstractMapActivity act = (AbstractMapActivity)context;
-				try
-				{
-					act.getDataAccessor().vote(selected, false);
-					d.dismiss();
-				}
-				catch(Exception e)
-				{
-					act.showCustomDialog("Error", "An error occurred while submitting your vote\n" + e.getMessage());
-					Log.e("Error", e.getMessage());
-				}
-			}});
+		voteFor.setOnClickListener(new VoteClickListener(dataAccessor, d, selected, true));
+		voteAgainst.setOnClickListener(new VoteClickListener(dataAccessor, d, selected, false));
 		
 		d.show();
 	}

@@ -48,7 +48,7 @@ public class MapComplaints extends AbstractMapActivity
 		Resources r = getResources();
 		Drawable marker = r.getDrawable(android.R.drawable.btn_star);
 		marker.setBounds(0, 0, marker.getIntrinsicWidth(), marker.getIntrinsicHeight());
-		Overlay overlay = new ItemizedComplaintOverlay(marker, complaints, this);
+		Overlay overlay = new ItemizedComplaintOverlay(marker, complaints, this, dataAccessor);
 		List<Overlay> overlays = mapView.getOverlays();
 		overlays.add(overlay);
 		mapView.postInvalidate();

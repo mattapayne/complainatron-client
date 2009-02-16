@@ -68,6 +68,8 @@ public class DataAccessor implements IDataAccessor
 		params.put(Constants.CATEGORY_ATTR, complaint.getCategory());
 		params.put(Constants.COMPLAINT_ATTR, complaint.getComplaint());
 		params.put(Constants.SUBMITTED_BY_ATTR, complaint.getSubmittedBy());
+		params.put(Constants.LATITUDE_ATTR, complaint.getLatitude());
+		params.put(Constants.LONGITUDE_ATTR, complaint.getLongitude());
 		
 		if(!post(getCreateUrl(), params))
 		{

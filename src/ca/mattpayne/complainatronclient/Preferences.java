@@ -1,9 +1,8 @@
 package ca.mattpayne.complainatronclient;
 
-import android.app.Activity;
 import android.os.Bundle;
 
-public class Preferences extends Activity
+public class Preferences extends AbstractActivity
 {
     @Override
     public void onCreate(Bundle savedInstanceState) 

@@ -10,12 +10,17 @@
 	<Spinner android:id="@+id/categorySpinner"
 		android:layout_width="wrap_content" android:layout_height="40px"
 		android:padding="5px" />
+	<TextView
+		android:id="@+id/complaintUserNameLabel"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:padding="5px" android:text="Your handle">
+	</TextView>
+	<EditText android:id="@+id/complaintUserNameText"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:padding="5px" android:text="EditText" android:textSize="18sp" />
 	<EditText android:id="@+id/complaintText"
 		android:layout_width="wrap_content" android:layout_height="217px"
 		android:padding="5px" android:text="EditText" android:textSize="18sp" />
-	<CheckBox android:id="@+id/checkAnonymous"
-		android:layout_width="wrap_content" android:layout_height="wrap_content"
-		android:text="Submit Anonymously" />
 	<LinearLayout android:layout_width="wrap_content"
 		android:layout_height="wrap_content" android:padding="5px"
 		android:layout_gravity="right">

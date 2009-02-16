@@ -14,25 +14,29 @@ public final class R {
         public static final int icon=0x7f020000;
     }
     public static final class id {
-        public static final int anonymousCheckBox=0x7f05000b;
-        public static final int cancelButton=0x7f050009;
-        public static final int categorySpinner=0x7f050005;
-        public static final int checkAnonymous=0x7f050007;
+        public static final int anonymousCheckBox=0x7f05000e;
+        public static final int cancelButton=0x7f05000c;
+        public static final int categorySpinner=0x7f050007;
         public static final int complaintDetailsTextView=0x7f050000;
-        public static final int complaintText=0x7f050006;
-        public static final int complaintsListView=0x7f050003;
-        public static final int mapView=0x7f050004;
-        public static final int numberComplaintsSpinner=0x7f05000a;
-        public static final int okButton=0x7f050008;
+        public static final int complaintText=0x7f05000a;
+        public static final int complaintUserNameLabel=0x7f050008;
+        public static final int complaintUserNameText=0x7f050009;
+        public static final int complaintsListView=0x7f050005;
+        public static final int lblError=0x7f050004;
+        public static final int mapView=0x7f050006;
+        public static final int numberComplaintsSpinner=0x7f05000d;
+        public static final int okButton=0x7f05000b;
         public static final int voteAgainstButton=0x7f050002;
         public static final int voteForButton=0x7f050001;
+        public static final int widget30=0x7f050003;
     }
     public static final class layout {
         public static final int complaint_details=0x7f030000;
-        public static final int main=0x7f030001;
-        public static final int map_complaints=0x7f030002;
-        public static final int new_complaint=0x7f030003;
-        public static final int preferences=0x7f030004;
+        public static final int error=0x7f030001;
+        public static final int main=0x7f030002;
+        public static final int map_complaints=0x7f030003;
+        public static final int new_complaint=0x7f030004;
+        public static final int preferences=0x7f030005;
     }
     public static final class string {
         public static final int always_anonymous=0x7f040008;

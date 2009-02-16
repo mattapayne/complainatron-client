@@ -1,6 +1,7 @@
 package ca.mattpayne.complainatronclient;
 
 import ca.mattpayne.complainatronclient.models.Complaint;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,16 +10,19 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class NewComplaint extends AbstractActivity
 {
 	private Spinner categoriesSpinner;
 	private EditText complaintText;
+	private EditText userNameText;
 	private ArrayAdapter<String> sAdapter;
+	private IMetadataHelper helper;
 	
 	public NewComplaint()
 	{
-		
+		helper = new MetadataHelperImpl(this);
 	}
 	
     @Override
@@ -39,6 +43,15 @@ public class NewComplaint extends AbstractActivity
 		Button cancel = (Button)findViewById(R.id.cancelButton);
 		complaintText = (EditText)findViewById(R.id.complaintText);
 		
+		userNameText = (EditText)findViewById(R.id.complaintUserNameText);
+		TextView userNameLabel = (TextView)findViewById(R.id.complaintUserNameLabel);
+		
+		if(helper.submitAnonymously())
+		{
+			userNameLabel.setVisibility(View.GONE);
+			userNameText.setVisibility(View.GONE);
+		}
+		
 		ok.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View arg0)
@@ -57,10 +70,23 @@ public class NewComplaint extends AbstractActivity
 	
 	private void createComplaint()
 	{
+		Location loc = helper.getCurrentLocation();
+		String lat = String.valueOf(loc.getLatitude());
+		String lng = String.valueOf(loc.getLongitude());
 		Complaint c = new Complaint();
 		c.setCategory(this.categoriesSpinner.getSelectedItem().toString());
 		c.setComplaint(complaintText.getText().toString());
-		c.setSubmittedBy("Android App");
+		
+		if(!helper.submitAnonymously())
+		{
+			c.setSubmittedBy(userNameText.getText().toString()); 
+		}
+		else
+		{
+			c.setSubmittedBy("Anonymous");
+		}
+		c.setLatitude(lat);
+		c.setLongitude(lng); 
 		
 		try
 		{

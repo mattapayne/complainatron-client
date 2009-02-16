@@ -6,12 +6,10 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -28,11 +26,6 @@ public class ComplainatronClient extends AbstractActivity
 	private static final int MENU_PREFS = Menu.FIRST;
 	private static final int MENU_MAP = MENU_PREFS + 1;
 	private static final int MENU_NEW = MENU_MAP + 1;
-	
-	public ComplainatronClient()
-	{
-		
-	}
 	
     @Override
     public void onCreate(Bundle savedInstanceState) 
@@ -123,39 +116,8 @@ public class ComplainatronClient extends AbstractActivity
 			}});
 		
 		final AlertDialog d = b.create();
-		
-		voteFor.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View arg0)
-			{
-				try
-				{
-					dataAccessor.vote(selectedComplaint, true);
-					d.dismiss();
-				}
-				catch(Exception e)
-				{
-					showCustomDialog("Error", "An error occurred while submitting your vote\n" + e.getMessage());
-					Log.e("Error", e.getMessage());
-				}
-			}});
-		
-		voteAgainst.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View arg0)
-			{
-				try
-				{
-					dataAccessor.vote(selectedComplaint, false);
-					d.dismiss();
-				}
-				catch(Exception e)
-				{
-					showCustomDialog("Error", "An error occurred while submitting your vote\n" + e.getMessage());
-					Log.e("Error", e.getMessage());
-				}
-			}});
-		
+		voteFor.setOnClickListener(new VoteClickListener(dataAccessor, d, selectedComplaint, true));
+		voteAgainst.setOnClickListener(new VoteClickListener(dataAccessor, d, selectedComplaint, false));
 		return d;
 	}
 

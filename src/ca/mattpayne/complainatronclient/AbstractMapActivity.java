@@ -1,24 +1,25 @@
 package ca.mattpayne.complainatronclient;
 
-import java.util.HashMap;
-import java.util.Map;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import ca.mattpayne.complainatronclient.data.DataAccessor;
+import ca.mattpayne.complainatronclient.data.Constuctor;
 import ca.mattpayne.complainatronclient.data.IDataAccessor;
-import ca.mattpayne.complainatronclient.models.Constants;
 import com.google.android.maps.MapActivity;
 
-public abstract class AbstractMapActivity extends MapActivity
+public abstract class AbstractMapActivity extends MapActivity implements IViewDisplayer
 {
 	protected IDataAccessor dataAccessor;
+	protected IViewDisplayer viewDisplayer;
+	
+	public AbstractMapActivity()
+	{
+		viewDisplayer = new ViewDisplayer(this);
+	}
 	
     @Override
     public void onCreate(Bundle savedInstanceState) 
     {
         super.onCreate(savedInstanceState);
-        hookupDataAccessor();
+        dataAccessor = new Constuctor().construct(this);
     }
 
 	@Override
@@ -27,59 +28,28 @@ public abstract class AbstractMapActivity extends MapActivity
 		return false;
 	}
 	
-	protected void showMapView()
+	public void showMapView()
 	{
-		Intent i = new Intent(AbstractMapActivity.this, MapComplaints.class);
-		startActivity(i);
-	}
-
-	protected void showCreateComplaint()
-	{
-		Intent i = new Intent(AbstractMapActivity.this, NewComplaint.class);
-		startActivity(i);
-	}
-
-	protected void showPreferences()
-	{
-		Intent i = new Intent(AbstractMapActivity.this, Preferences.class);
-		startActivity(i);
+		viewDisplayer.showMapView();
 	}
 	
-	protected void showCustomDialog(String title, String message)
+	public void showMainView()
 	{
-		
-	}
-	
-	public IDataAccessor getDataAccessor()
-	{
-		return dataAccessor;
-	}
-	
-	protected void hookupDataAccessor()
-	{
-		String createUrl = getString(R.string.create_complaint_url);
-		String complaintsUrl = getString(R.string.get_complaints_url);
-		String apiKey = getString(R.string.api_key);
-		String voteUrl = getString(R.string.vote_url);
-		String categoriesUrl = getString(R.string.get_categories_url);
-		String maxResults = getString(R.string.max_results);
-		
-		try
-		{
-			Map<String, String> settings = new HashMap<String, String>();
-			settings.put(Constants.CATEGORIES_URL, categoriesUrl);
-			settings.put(Constants.API_KEY, apiKey);
-			settings.put(Constants.CREATE_URL, createUrl);
-			settings.put(Constants.VOTE_URL, voteUrl);
-			settings.put(Constants.COMPLAINTS_URL, complaintsUrl);
-			settings.put(Constants.MAX_RESULTS, maxResults);
-			dataAccessor = new DataAccessor(settings);
-		} 
-		catch (Exception e)
-		{
-			showCustomDialog("Error", "Cannot contact server\n" + e.getMessage());
-			Log.e("Error", e.getMessage());
-		}
+		viewDisplayer.showMainView();
 	}
 
+	public void showCreateComplaint()
+	{
+		viewDisplayer.showCreateComplaint();
+	}
+
+	public void showPreferences()
+	{
+		viewDisplayer.showPreferences();
+	}
+	
+	public void showCustomDialog(String title, String message)
+	{
+		viewDisplayer.showCustomDialog(title, message);
+	}
 }
