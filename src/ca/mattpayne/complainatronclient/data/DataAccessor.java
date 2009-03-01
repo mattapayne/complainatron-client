@@ -29,7 +29,7 @@ public class DataAccessor implements IDataAccessor
 {
 	private Map<String, String> settings;
 	private static String[] requiredSettings = {Constants.API_KEY, Constants.CATEGORIES_URL, 
-		Constants.COMPLAINTS_URL, Constants.CREATE_URL, Constants.MAX_RESULTS, Constants.VOTE_URL};
+		Constants.COMPLAINTS_URL, Constants.CREATE_URL, Constants.VOTE_URL};
 	
 	//Constructor
 	public DataAccessor(Map<String, String> settings) throws Exception
@@ -78,11 +78,17 @@ public class DataAccessor implements IDataAccessor
 	}
 
 	//fetch all complaints
-	public List<Complaint> fetchComplaints(int page)
+	public List<Complaint> fetchComplaints(int quantity)
+	{
+		return fetchComplaints(0, quantity);
+	}
+	
+	//fetch all complaints
+	public List<Complaint> fetchComplaints(int page, int quantity)
 	{
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(Constants.PAGE_PARAM, Integer.toString(page));
-		params.put(Constants.MAX_PARAM, getMaxResults());
+		params.put(Constants.MAX_PARAM, Integer.toString(quantity));
 		String results = get(getComplaintsUrl(), params);
 		if(results != null && results.length() > 0)
 		{
@@ -323,10 +329,5 @@ public class DataAccessor implements IDataAccessor
 	private String getApiKey()
 	{
 		return this.settings.get(Constants.API_KEY);
-	}
-	
-	private String getMaxResults()
-	{
-		return this.settings.get(Constants.MAX_RESULTS);
 	}
 }

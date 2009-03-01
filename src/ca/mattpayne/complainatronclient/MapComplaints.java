@@ -1,6 +1,5 @@
 package ca.mattpayne.complainatronclient;
 
-//TODO - Figure out how to get the location stuff emulating
 import java.util.List;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -14,18 +13,22 @@ import com.google.android.maps.Overlay;
 
 import ca.mattpayne.complainatronclient.models.Complaint;
 
+//TODO - Figure out a way to show multiple complaints at the same location!!
+
 public class MapComplaints extends AbstractMapActivity
 {
 	private int START_ZOOM = 1;
 	private MapView mapView;
 	private MapController controller;
 	private List<Complaint> complaints;
+	private IMetadataHelper helper;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) 
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_complaints);
+        helper = new MetadataHelperImpl(this);
         hookupControls();
         populateMap();
     }
@@ -38,7 +41,7 @@ public class MapComplaints extends AbstractMapActivity
 
 	private void populateMap()
 	{
-		complaints = dataAccessor.fetchComplaints(0);
+		complaints = dataAccessor.fetchComplaints(helper.numberOfComplaintsToDisplay());
 		controller.setZoom(START_ZOOM);
 		mapView.setStreetView(false);
 		ZoomControls zoomControls = (ZoomControls)mapView.getZoomControls();

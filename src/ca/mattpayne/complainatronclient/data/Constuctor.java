@@ -26,7 +26,6 @@ public class Constuctor implements IDataAccessorConstructor
 			settings.put(Constants.CREATE_URL, createUrl);
 			settings.put(Constants.VOTE_URL, voteUrl);
 			settings.put(Constants.COMPLAINTS_URL, complaintsUrl);
-			settings.put(Constants.MAX_RESULTS, maxResults);
 			dataAccessor = new DataAccessor(settings);
 		} 
 		catch (Exception e)

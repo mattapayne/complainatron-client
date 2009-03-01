@@ -26,13 +26,15 @@ public class ComplainatronClient extends AbstractActivity
 	private static final int MENU_PREFS = Menu.FIRST;
 	private static final int MENU_MAP = MENU_PREFS + 1;
 	private static final int MENU_NEW = MENU_MAP + 1;
+	private IMetadataHelper helper;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) 
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        currentComplaints = dataAccessor.fetchComplaints(0);
+        helper = new MetadataHelperImpl(this);
+        currentComplaints = dataAccessor.fetchComplaints(helper.numberOfComplaintsToDisplay());
         hookupControls();
     }
 

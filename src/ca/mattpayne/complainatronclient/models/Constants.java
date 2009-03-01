@@ -7,7 +7,6 @@ public interface Constants
 	public static final String VOTE_URL = "vote_url";
 	public static final String CREATE_URL = "create_url";
 	public static final String API_KEY = "api_key";
-	public static final String MAX_RESULTS = "max_results";
 	
 	//query string params
 	public static final String PAGE_PARAM = "page";

@@ -11,6 +11,12 @@
 		android:layout_width="wrap_content" android:layout_height="40px"
 		android:padding="5px" />
 	<TextView
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:padding="5px" android:text="New Category" />
+	<EditText android:id="@+id/complaintCategoryText"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:padding="5px" android:text="EditText" android:textSize="18sp" />
+	<TextView
 		android:id="@+id/complaintUserNameLabel"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"
 		android:padding="5px" android:text="Your handle">
@@ -19,7 +25,7 @@
 		android:layout_width="wrap_content" android:layout_height="wrap_content"
 		android:padding="5px" android:text="EditText" android:textSize="18sp" />
 	<EditText android:id="@+id/complaintText"
-		android:layout_width="wrap_content" android:layout_height="217px"
+		android:layout_width="wrap_content" android:layout_height="160px"
 		android:padding="5px" android:text="EditText" android:textSize="18sp" />
 	<LinearLayout android:layout_width="wrap_content"
 		android:layout_height="wrap_content" android:padding="5px"

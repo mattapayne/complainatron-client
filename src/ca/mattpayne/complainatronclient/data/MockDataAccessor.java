@@ -50,7 +50,12 @@ public class MockDataAccessor implements IDataAccessor
 		return complaints();
 	}
 
-	public List<Complaint> fetchComplaints(int last)
+	public List<Complaint> fetchComplaints(int quantity)
+	{
+		return complaints();
+	}
+	
+	public List<Complaint> fetchComplaints(int page, int quantity)
 	{
 		return complaints();
 	}

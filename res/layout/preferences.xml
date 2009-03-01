@@ -25,13 +25,13 @@
  		android:layout_alignParentRight="true"
     	android:layout_height="wrap_content">
    		<Button
-    		android:id="@+id/okButton"
+    		android:id="@+id/okPrefsButton"
     		android:layout_alignParentRight="true"
     		android:layout_width="wrap_content"
     		android:layout_height="wrap_content"
     		android:text="OK" />
     	<Button
-    		android:id="@+id/cancelButton"
+    		android:id="@+id/cancelPrefsButton"
     		android:layout_alignParentRight="true"
     		android:layout_width="wrap_content"
     		android:layout_height="wrap_content"

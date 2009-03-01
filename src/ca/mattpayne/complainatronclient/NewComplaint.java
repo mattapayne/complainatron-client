@@ -12,11 +12,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+//TODO - do not have text in the areas where people type. it's annoying to delete it before typing
 public class NewComplaint extends AbstractActivity
 {
 	private Spinner categoriesSpinner;
 	private EditText complaintText;
 	private EditText userNameText;
+	private EditText categoryText;
 	private ArrayAdapter<String> sAdapter;
 	private IMetadataHelper helper;
 	
@@ -42,6 +44,7 @@ public class NewComplaint extends AbstractActivity
 		Button ok = (Button)findViewById(R.id.okButton);
 		Button cancel = (Button)findViewById(R.id.cancelButton);
 		complaintText = (EditText)findViewById(R.id.complaintText);
+		categoryText = (EditText)findViewById(R.id.complaintCategoryText);
 		
 		userNameText = (EditText)findViewById(R.id.complaintUserNameText);
 		TextView userNameLabel = (TextView)findViewById(R.id.complaintUserNameLabel);
@@ -74,7 +77,7 @@ public class NewComplaint extends AbstractActivity
 		String lat = String.valueOf(loc.getLatitude());
 		String lng = String.valueOf(loc.getLongitude());
 		Complaint c = new Complaint();
-		c.setCategory(this.categoriesSpinner.getSelectedItem().toString());
+		c.setCategory(getCategory());
 		c.setComplaint(complaintText.getText().toString());
 		
 		if(!helper.submitAnonymously())
@@ -98,5 +101,19 @@ public class NewComplaint extends AbstractActivity
 			Log.e("Error", e.getMessage());
 			showCustomDialog("Error", "An error occurred while attempting to create the complaint!\n" + e.getMessage());
 		}
+	}
+	
+	private String getCategory()
+	{
+		String category = "";
+		if(categoryText.getText() != null && categoryText.getText().length() > 0)
+		{
+			category = categoryText.getText().toString();
+		}
+		else if(categoriesSpinner.getSelectedItem() != null)
+		{
+			category = categoriesSpinner.getSelectedItem().toString();
+		}
+		return category;
 	}
 }
